@@ -1,0 +1,158 @@
+﻿@model EFGesAgro.Models.Pessoa
+@{
+    ViewBag.Title = "Proprietários";
+}
+<!DOCTYPE html>
+
+@Scripts.Render("~/bundles/jquery")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Cadastro de proprietário</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Nome">Nome</label>
+                                <input type="text" class="form-control" placeholder="" name="PesNom" id="@Html.EditorFor(model => model.PesNom)"/>
+                                @Html.ValidationMessageFor(model => model.PesNom) 
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Tipo">Tipo</label>
+                                @{ List<SelectListItem> ListTipos = new List<SelectListItem>();
+                                   ListTipos.Add(new SelectListItem { Text = "Física", Value = "F" });
+                                   ListTipos.Add(new SelectListItem { Text = "Juridica", Value = "J" });
+                                }
+
+                                @Html.DropDownList("PesTip", new SelectList(ListTipos, "Value", "Text"), "Escolha o tipo", new { @class = "form-control", @id = "ocultarDoc", @required = "" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Dcoumento">CPF/CNPJ</label>
+                                <input type="text" class="form-control" placeholder="" name="PesCpf" id="@Html.EditorFor(model => model.PesCpf)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ocultarIns" id="Inscricao">
+                            <div class="form-group">
+                                <label class="control-label" for="InscricaoEstadual">Inscrição Estadual</label>
+                                <input type="text" class="form-control" placeholder="" name="PesIns" id="@Html.EditorFor(model => model.PesIns)"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ocultarRg" id="Rg">
+                            <div class="form-group">
+                                <label class="control-label" for="RG">RG</label>
+                                <input type="text" class="form-control" placeholder="" name="PesRg" id="@Html.EditorFor(model => model.PesRg)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Endereco">Endereço</label>
+                                <input type="text" class="form-control" placeholder="" name="PesEnd" id="@Html.EditorFor(model => model.PesEnd)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <label class="control-label" for="Numero">Nro</label>
+                                <input type="text" class="form-control" placeholder="" name="PesNro" id="@Html.EditorFor(model => model.PesNro)" required="" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Bairro">Bairro</label>
+                                <input type="text" class="form-control"  placeholder="" name="PesBai" id="@Html.EditorFor(model => model.PesBai)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Complemento">Complemento</label>
+                                <input type="text" class="form-control" placeholder="" name="PesCom" id="@Html.EditorFor(model => model.PesCom)" required="" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Estado">Estado</label>
+                                @Html.DropDownList("EstCod", (IEnumerable<SelectListItem>)ViewBag.EstCodList, "Selecione um estado", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Cidade">Cidade</label>
+                                @Html.DropDownList("CidCod", (IEnumerable<SelectListItem>)ViewBag.CidCodList, "Selecione uma cidade", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="CEP">Cep</label>
+                                <input type="text" class="form-control" placeholder="" name="PesCep" id="@Html.EditorFor(model => model.PesCep)" required="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Telefone">Telefone</label>
+                                <input type="text" class="form-control" placeholder="" name="PesFon" id="@Html.EditorFor(model => model.PesFon)" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Celular">Celular</label>
+                                <input type="text" class="form-control" placeholder="" name="PesCel" id="@Html.EditorFor(model => model.PesCel)" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label class="control-label" for="Status">Status</label>
+                                @{ List<SelectListItem> StatusPessoa = new List<SelectListItem>();
+                                   StatusPessoa.Add(new SelectListItem { Text = "Ativo", Value = "A" });
+                                   StatusPessoa.Add(new SelectListItem { Text = "Inátivo", Value = "I" });
+                                }
+
+                                @Html.DropDownList("PesSta", new SelectList(StatusPessoa, "Value", "Text"), "Escolha o tipo", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Email">Email</label>
+                                <input type="text" class="form-control" placeholder="" name="PesEmail" id="@Html.EditorFor(model => model.PesEmail)" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Eail">Senha</label>
+                                <input type="password" class="form-control" placeholder="" name="PesUsr" id="@Html.EditorFor(model => model.PesUsr)" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+}
+
+@using System.Web.Optimization

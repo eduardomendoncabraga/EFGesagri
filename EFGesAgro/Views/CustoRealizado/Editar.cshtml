@@ -1,0 +1,52 @@
+﻿@model EFGesAgro.Models.CustoPrevisto
+
+
+@{
+    ViewBag.Title = "Custo realizado";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+   <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Custo realizado</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="CusPrevTlhCod">Talhão</label>
+                                @Html.DropDownListFor(c => c.CusPrevTlhCod, (IEnumerable<SelectListItem>)ViewBag.NroTlh, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label class="control-label" for="CusPrevItm">Itens</label>
+                                @Html.DropDownListFor(c => c.CusPrevItm, (IEnumerable<SelectListItem>)ViewBag.ItnsCus, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label class="control-label" for="CusPrevVlr">Valor R$</label>
+                                @Html.TextBoxFor(model => model.CusPrevVlr, new { onkeyup="formataValor(this,event);", @class = "form-control"})                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <label class="control-label" for="CusPrevObs">Observação</label>
+                           @Html.TextBoxFor(model => model.CusPrevObs, new {@type="textarea",  @Class = "textarea form-control" })
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+}

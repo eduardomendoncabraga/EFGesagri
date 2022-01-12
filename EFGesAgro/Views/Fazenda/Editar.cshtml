@@ -1,0 +1,161 @@
+﻿@model EFGesAgro.Models.Fazenda
+
+@{
+    ViewBag.Title = "Cadastro de fazenda";
+}
+
+@using (Html.BeginForm())
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Cadastro de fazenda</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Proprietario">Proprietário</label>
+                                @Html.DropDownListFor(f => f.FazPes, (IEnumerable<SelectListItem>)ViewBag.FazPesList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Nome</label>
+                                @Html.TextBoxFor(model => model.FazNom, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Documento</label>
+                                @Html.TextBoxFor(model => model.FazDoc, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Inscrição estadual</label>
+                                @Html.TextBoxFor(model => model.FazIns, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">NIRF</label>
+                                @Html.TextBoxFor(model => model.FazNIRF, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Data">Data do cadastrado</label>
+                                @Html.TextBoxFor(model => model.FazDat, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Endereco">Endereço</label>
+                                @Html.TextBoxFor(model => model.FazEnd, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <label class="control-label" for="Numero">Nro</label>
+                                @Html.TextBoxFor(model => model.FazNro, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Bairro">Bairro</label>
+                                @Html.TextBoxFor(model => model.FazBai, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Complemento">Complemento</label>
+                                @Html.TextBoxFor(model => model.FazCom, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Estado">Estado</label>
+                                @Html.DropDownListFor(f => f.FazEst, (IEnumerable<SelectListItem>)ViewBag.FazEstList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Cidade">Cidade</label>
+                                @Html.DropDownListFor(f => f.FazCid, (IEnumerable<SelectListItem>)ViewBag.FazCidList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="CEP">Cep</label>
+                                @Html.TextBoxFor(model => model.FazCep, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Telefone">Telefone</label>
+                                @Html.TextBoxFor(model => model.FazFone1, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Celular">Celular</label>
+                                @Html.TextBoxFor(model => model.FazCel, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fax">Fax</label>
+                                @Html.TextBoxFor(model => model.FazFax, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Email</label>
+                                @Html.TextBoxFor(model => model.FazEmail, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Area (HA)</label>
+                                @Html.TextBoxFor(model => model.FazAre, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Latitude</label>
+                                @Html.TextBoxFor(model => model.FazLat, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Longitude</label>
+                                @Html.TextBoxFor(model => model.FazLon, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+}

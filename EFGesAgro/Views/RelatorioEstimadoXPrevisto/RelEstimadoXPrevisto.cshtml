@@ -1,0 +1,72 @@
+﻿@model IEnumerable<EFGesAgro.Models.CustoEstimadoXCustoRealizado>
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RelEstimadoXPrevisto</title>
+</head>
+<body>
+    <div>
+         <table class="table" border="0" style="width:100%; border:0" cellpadding="2" cellspacing="2">
+        <tr>
+            <td colspan="2">Relatório - Estimativa de custo</td>
+        </tr>   
+             <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Código")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Propriedade rural")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Talhão")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Cultura")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Item")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Valo R$")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusEstCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Talhao.Fazenda.FazNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Talhao.TlhDes)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Talhao.Cultura.CulNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustoItens.CusItmDesc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusEstVlr)
+                                </td>
+
+
+
+    </table>
+                        }
+    </div>
+</body>
+</html>

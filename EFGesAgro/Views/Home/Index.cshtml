@@ -1,0 +1,111 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@{
+    ViewBag.Title = "Home";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EF-GESAGRO</title>
+    <!-- Bootstrap -->
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel='stylesheet' type='text/css' />
+    <link href="@Url.Content("~/Content/font-awesome/css/Font-awesome.min.css")" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" media="all" />
+     <style>
+        body {
+            padding: 0px;
+            margin:  0px;
+            margin-left:  0px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <a class="navbar-brand" href="index.html"><i class="fa fa-pagelines"></i>EF-GESAGRO</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slide -->
+    <div class="header-banner">
+
+        <div class="container">
+            <div class="slider">
+                <div class="callbacks_container">
+                    <ul class="rslides" id="slider">
+                        <li>
+                            <img src="images/bnr10.jpg" alt="">
+                            <div class="caption">
+                                <h1>100% Online<span>.</span></h1>
+                                <p>Gerencie sua propriedade de onde estiver, basta estar conectado</p>
+                                <a href="services.html" class="btn">Saiba mais</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/bnr2.jpg" alt="">
+                            <div class="caption">
+                                <h1>Redução de Custos<span>.</span></h1>
+                                <p>Facilidade na redução de custos com relatórios especificados</p>
+                                <a href="services.html" class="btn">Saiba mais</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="section_header">
+        <h2>Chegou a hora de você mudar o rumo da gestão de sua fazenda!</h2>
+    </div>
+    <div id="welcome">
+        <div class="container">
+            <div class="col-md-6">
+                <img class="img-responsive" src="images/about1.jpg" align="">
+            </div>
+            <div class="col-md-6">
+                <h3>Sobre nós</h3>
+                <p>O EF-GesAgro Web é um sistema para gestão de fazendas, que facilita o gerenciamento de propriedades produtoras de soja, algodão, café, frutas e outros. A versão Web do EF-GesAgro é capaz de ser acessada de qualquer computador, tablet ou smartphone.</p>
+                <p>A EF- GesAgro é uma empresa especializada em gestão do agronegócio, a ferramenta que oferece ao produtor rural uma gestão moderna e ágil da fazenda. Com diversas funcionalidades como monitoramento e controle de custos.</p>
+                <a href="sobre.html" class="btn">Saiba mais</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div id="footerwrap">
+        <div class="container">
+            <div class="row-center">
+                <div class="col-md-8"><span align="center" class="copyright">Copyright &copy; 2015 EF-GesAgro.</span> </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/responsiveslides.min.js")"></script>
+</body>
+</html>
+
+

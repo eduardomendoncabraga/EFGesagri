@@ -1,0 +1,95 @@
+﻿@model IEnumerable<EFGesAgro.Models.CustoViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RelEstimadoXPrevisto</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CusEstCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusEstTlhCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusEstVlr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusEstObs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusEstItm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusPrevCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusPrevTlhCod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusPrevItm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusPrevObs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CusPrevVlr)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusEstCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusEstTlhCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusEstVlr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusEstObs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusEstItm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusPrevCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusPrevTlhCod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusPrevItm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusPrevObs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CusPrevVlr)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

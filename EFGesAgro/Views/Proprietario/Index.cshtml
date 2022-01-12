@@ -1,0 +1,139 @@
+﻿@model IEnumerable<EFGesAgro.Models.Pessoa>
+
+@{
+    ViewBag.Title = "Proprietário";
+}
+
+<!DOCTYPE html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Proprietários
+                
+                <div class="pull-right">
+                    @Html.ActionLink("Novo", "Adicionar", "Proprietario", null, new { @class = "btn btn-primary btn-xs"  })
+                </div>
+                    </h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                         <th>
+                            @Html.DisplayName("Código")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Nome")
+                        </th>
+
+                        <th>
+                            @Html.DisplayName("Endereço")
+                        </th>
+
+                        <th>
+                            @Html.DisplayName("Bairro")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Nro")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Estado")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Cidade")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Email")
+                        </th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                 <td>
+                                    @Html.DisplayFor(modelItem => item.PesCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PesNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PesEnd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PesBai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PesNro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado.EstNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cidade.CidNom)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PesEmail)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Editar", new { PesCod = item.PesCod }, new { @class = "btn btn-primary-editar btn-xs" })
+                                    <!--@Html.ActionLink("Detalhes", "Detalhes", new { PesCod = item.PesCod }) -->
+                                </td>
+                                <td>
+                                    <!--<a href="@Url.Action("Excluir", new { PesCod = item.PesCod })" class="btn btn-danger btn-xs" >
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>-->
+                                    @Html.ActionLink("Excluir", "Excluir", new { PesCod = item.PesCod }, new { @class = "btn btn-danger btn-xs excluir" })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+                @section Scripts{
+                    <script>
+                        $(function () {
+                            var linhaAtual;
+
+                            $("#menuProprietario").addClass("active");
+
+                            $(".excluir").on("click", function () {
+                                if (confirm("Confirma a exclusão do proprietário?")) {
+                                    var urlExclusao = $(this).attr("href");
+                                    linhaAtual = $(this).closest("tr");
+
+                                    $.ajax({
+                                        url: urlExclusao,
+                                        type: "POST"
+                                    }).done(function (excluiu) {
+                                        if (excluiu) {
+                                            linhaAtual.remove();
+                                        } else {
+                                            alert("Ocorreu algum problema na exclusão do proprietário :(");
+                                        }
+                                    }).fail(function () {
+                                        alert("Ocorreu algum erro :(");
+                                    });
+                                }
+
+                                return false;
+                            });
+                        });
+
+                    </script>
+                }
+                <div class="clearfix">
+                    <ul class="pagination pull-right">
+                        <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

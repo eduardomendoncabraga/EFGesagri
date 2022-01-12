@@ -1,0 +1,50 @@
+﻿@model EFGesAgro.Models.CustoPrevisto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CustoPrevisto</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CusPrevCod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CusPrevCod)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CusPrevTlhCod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CusPrevTlhCod)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CusPrevItm)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CusPrevItm)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CusPrevObs)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CusPrevObs)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CusPrevVlr)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CusPrevVlr)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

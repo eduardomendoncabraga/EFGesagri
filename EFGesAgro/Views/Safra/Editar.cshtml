@@ -1,0 +1,51 @@
+﻿@model EFGesAgro.Models.Safra
+
+@{
+    ViewBag.Title = "Cadastro de safra";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Cadstro de safra</div>
+        </div>
+        <div>
+            <div class="container-fluid">
+                <form class="form-horizontal" method="POST">
+                    <div class="panel-body">
+                        <div class="row">
+                              @Html.HiddenFor(model => model.SfrCod)
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="Descricao">Descrição</label>
+                                    @Html.TextBoxFor(model => model.SfrDesc, new { @class = "form-control"})
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="DataInicio">Data de abertura</label>
+                                    @Html.TextBoxFor(model => model.SfrDatIni, new { @class = "form-control"})
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="DataFechamento">Data de fechamento  </label>
+                                    @Html.TextBoxFor(model => model.SfrDatFim, new { @class = "form-control"})
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <button type="submit" class="btn btn-success">Confirmar</button>
+                <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+            </div>
+        </div>
+    </div>
+}
+
+@using System.Web.Optimization

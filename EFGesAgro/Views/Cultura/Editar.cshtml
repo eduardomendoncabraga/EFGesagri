@@ -1,0 +1,45 @@
+﻿@model EFGesAgro.Models.Cultura
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Cadastro de cultura</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Nome">Nome</label>
+                                @Html.TextBoxFor(model => model.CulNom, new {@class = "form-control" })
+                            </div>
+                        </div>
+                         <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Status">Status</label>
+                                @{ List<SelectListItem> ListStatus = new List<SelectListItem>();
+                                   ListStatus.Add(new SelectListItem { Text = "Ativo", Value = "A" });
+                                   ListStatus.Add(new SelectListItem { Text = "Inátivo", Value = "I" });}
+
+                                @Html.DropDownList("CulSta", new SelectList(ListStatus, "Value", "Text"), "Escolha o status", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+}

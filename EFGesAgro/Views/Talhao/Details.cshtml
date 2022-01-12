@@ -1,0 +1,85 @@
+﻿@model EFGesAgro.Models.Talhao
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detaalhes</h2>
+
+<fieldset>
+    <legend>Talhao</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TlhCod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TlhCod)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TlhDes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TlhDes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TlhQtd)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TlhQtd)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TlhSisCul)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TlhSisCul)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TlhAre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TlhAre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TlhAreApp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TlhAreApp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TlhSit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TlhSit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TlhDat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TlhDat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Variedade.VdeNom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Variedade.VdeNom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cultura.CulNom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cultura.CulNom)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

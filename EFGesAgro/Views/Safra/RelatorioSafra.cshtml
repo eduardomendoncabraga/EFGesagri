@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EFGesAgro.Models.Safra>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Relario de safras</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+    <div style="text-align: center">
+        <img src="@Server.MapPath("~/Images/logo_rel.jpg")"/>
+    </div>
+    <br />
+    <h2 style="text-align: center; text-decoration: solid">Relatório - Safras</h2>
+    <hr>________________________________________________________________________________________________________________</hr>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Código")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Descrição")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Data de abertura")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Data de fechamento")
+                    </th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SfrCod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SfrDesc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SfrDatIni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SfrDatFim)
+                    </td>
+                </tr> 
+            }
+        </table>
+        <hr>________________________________________________________________________________________________________________</hr>
+    </div>
+</body>
+</html>

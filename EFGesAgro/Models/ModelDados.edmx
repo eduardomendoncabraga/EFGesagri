@@ -1,0 +1,998 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EFGESAGROModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="EFGESAGROModelStoreContainer">
+          <EntitySet Name="Cidade" EntityType="EFGESAGROModel.Store.Cidade" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cultura" EntityType="EFGESAGROModel.Store.Cultura" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustoEstimado" EntityType="EFGESAGROModel.Store.CustoEstimado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustoItens" EntityType="EFGESAGROModel.Store.CustoItens" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustoPrevisto" EntityType="EFGESAGROModel.Store.CustoPrevisto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Estado" EntityType="EFGESAGROModel.Store.Estado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Fazenda" EntityType="EFGESAGROModel.Store.Fazenda" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pessoa" EntityType="EFGESAGROModel.Store.Pessoa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Safra" EntityType="EFGESAGROModel.Store.Safra" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Talhao" EntityType="EFGESAGROModel.Store.Talhao" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Variedade" EntityType="EFGESAGROModel.Store.Variedade" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="CUS01_CUSITM01" Association="EFGESAGROModel.Store.CUS01_CUSITM01">
+            <End Role="CustoItens" EntitySet="CustoItens" />
+            <End Role="CustoEstimado" EntitySet="CustoEstimado" />
+          </AssociationSet>
+          <AssociationSet Name="CUS01_CUSTTTLH01" Association="EFGESAGROModel.Store.CUS01_CUSTTTLH01">
+            <End Role="Talhao" EntitySet="Talhao" />
+            <End Role="CustoEstimado" EntitySet="CustoEstimado" />
+          </AssociationSet>
+          <AssociationSet Name="CUS02_CUSITM02" Association="EFGESAGROModel.Store.CUS02_CUSITM02">
+            <End Role="CustoItens" EntitySet="CustoItens" />
+            <End Role="CustoPrevisto" EntitySet="CustoPrevisto" />
+          </AssociationSet>
+          <AssociationSet Name="CUS02_CUSTLH02" Association="EFGESAGROModel.Store.CUS02_CUSTLH02">
+            <End Role="Talhao" EntitySet="Talhao" />
+            <End Role="CustoPrevisto" EntitySet="CustoPrevisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cidade_Estado" Association="EFGESAGROModel.Store.FK_Cidade_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fazenda_Cidade" Association="EFGESAGROModel.Store.FK_Fazenda_Cidade">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="Fazenda" EntitySet="Fazenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fazenda_Estado" Association="EFGESAGROModel.Store.FK_Fazenda_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Fazenda" EntitySet="Fazenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fazenda_Pessoa" Association="EFGESAGROModel.Store.FK_Fazenda_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Fazenda" EntitySet="Fazenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_Cidade" Association="EFGESAGROModel.Store.FK_Pessoa_Cidade">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_Estado" Association="EFGESAGROModel.Store.FK_Pessoa_Estado">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variedade_Cultura" Association="EFGESAGROModel.Store.FK_Variedade_Cultura">
+            <End Role="Cultura" EntitySet="Cultura" />
+            <End Role="Variedade" EntitySet="Variedade" />
+          </AssociationSet>
+          <AssociationSet Name="TLH01_CUL01" Association="EFGESAGROModel.Store.TLH01_CUL01">
+            <End Role="Cultura" EntitySet="Cultura" />
+            <End Role="Talhao" EntitySet="Talhao" />
+          </AssociationSet>
+          <AssociationSet Name="TLH01_FAZ01" Association="EFGESAGROModel.Store.TLH01_FAZ01">
+            <End Role="Fazenda" EntitySet="Fazenda" />
+            <End Role="Talhao" EntitySet="Talhao" />
+          </AssociationSet>
+          <AssociationSet Name="TLH01_SFR01" Association="EFGESAGROModel.Store.TLH01_SFR01">
+            <End Role="Safra" EntitySet="Safra" />
+            <End Role="Talhao" EntitySet="Talhao" />
+          </AssociationSet>
+          <AssociationSet Name="TLH01_VDE01" Association="EFGESAGROModel.Store.TLH01_VDE01">
+            <End Role="Variedade" EntitySet="Variedade" />
+            <End Role="Talhao" EntitySet="Talhao" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cidade">
+          <Key>
+            <PropertyRef Name="CidCod" />
+          </Key>
+          <Property Name="CidCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CidNom" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="EstCod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cultura">
+          <Key>
+            <PropertyRef Name="CulCod" />
+          </Key>
+          <Property Name="CulCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CulNom" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CulSta" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CustoEstimado">
+          <Key>
+            <PropertyRef Name="CusEstCod" />
+          </Key>
+          <Property Name="CusEstCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CusEstTlhCod" Type="int" Nullable="false" />
+          <Property Name="CusEstVlr" Type="numeric" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="CusEstObs" Type="varchar" MaxLength="150" />
+          <Property Name="CusEstItm" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustoItens">
+          <Key>
+            <PropertyRef Name="CusItm" />
+          </Key>
+          <Property Name="CusItm" Type="int" Nullable="false" />
+          <Property Name="CusItmDesc" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CusItmOrd" Type="int" Nullable="false" />
+          <Property Name="CusItmTip" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="CustoPrevisto">
+          <Key>
+            <PropertyRef Name="CusPrevCod" />
+          </Key>
+          <Property Name="CusPrevCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CusPrevTlhCod" Type="int" Nullable="false" />
+          <Property Name="CusPrevItm" Type="int" Nullable="false" />
+          <Property Name="CusPrevObs" Type="varchar" MaxLength="150" />
+          <Property Name="CusPrevVlr" Type="numeric" Nullable="false" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="EstCod" />
+          </Key>
+          <Property Name="EstCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EstNom" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="EstSig" Type="varchar" Nullable="false" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Fazenda">
+          <Key>
+            <PropertyRef Name="FazCod" />
+          </Key>
+          <Property Name="FazCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FazNom" Type="varchar" MaxLength="50" />
+          <Property Name="FazDoc" Type="varchar" MaxLength="15" />
+          <Property Name="FazIns" Type="varchar" MaxLength="15" />
+          <Property Name="FazCom" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="FazNIRF" Type="varchar" MaxLength="10" />
+          <Property Name="FazAre" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="FazLat" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="FazLon" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="FazDat" Type="datetime" />
+          <Property Name="FazEnd" Type="varchar" MaxLength="40" />
+          <Property Name="FazBai" Type="varchar" MaxLength="40" />
+          <Property Name="FazNro" Type="varchar" MaxLength="15" />
+          <Property Name="FazCid" Type="int" Nullable="false" />
+          <Property Name="FazEst" Type="int" Nullable="false" />
+          <Property Name="FazCep" Type="varchar" MaxLength="20" />
+          <Property Name="FazEmail" Type="varchar" MaxLength="40" />
+          <Property Name="FazFone1" Type="varchar" MaxLength="12" />
+          <Property Name="FazCel" Type="varchar" MaxLength="12" />
+          <Property Name="FazFax" Type="varchar" MaxLength="15" />
+          <Property Name="FazPes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="PesCod" />
+          </Key>
+          <Property Name="PesCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PesNom" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="PesEnd" Type="varchar" MaxLength="80" />
+          <Property Name="PesBai" Type="varchar" MaxLength="80" />
+          <Property Name="PesNro" Type="varchar" MaxLength="10" />
+          <Property Name="PesCom" Type="varchar" MaxLength="30" />
+          <Property Name="PesCep" Type="varchar" MaxLength="15" />
+          <Property Name="PesCpf" Type="varchar" MaxLength="15" />
+          <Property Name="PesRg" Type="varchar" MaxLength="10" />
+          <Property Name="PesIns" Type="varchar" MaxLength="10" />
+          <Property Name="PesTip" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="PesEmail" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="EstCod" Type="int" Nullable="false" />
+          <Property Name="CidCod" Type="int" Nullable="false" />
+          <Property Name="PesSta" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="PesFon" Type="varchar" MaxLength="12" />
+          <Property Name="PesCel" Type="varchar" MaxLength="12" />
+          <Property Name="PesUsr" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Safra">
+          <Key>
+            <PropertyRef Name="SfrCod" />
+          </Key>
+          <Property Name="SfrCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SfrDesc" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SfrDatIni" Type="date" Nullable="false" />
+          <Property Name="SfrDatFim" Type="date" />
+        </EntityType>
+        <EntityType Name="Talhao">
+          <Key>
+            <PropertyRef Name="TlhCod" />
+          </Key>
+          <Property Name="TlhCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TlhDes" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="TlhQtd" Type="numeric" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="TlhSisCul" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="TlhAre" Type="numeric" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="TlhAreApp" Type="numeric" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="TlhSit" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="TlhDat" Type="datetime" Nullable="false" />
+          <Property Name="VdeCod" Type="int" Nullable="false" />
+          <Property Name="CulCod" Type="int" Nullable="false" />
+          <Property Name="TlhFazCod" Type="int" />
+          <Property Name="TlhSfrCod" Type="int" />
+        </EntityType>
+        <EntityType Name="Variedade">
+          <Key>
+            <PropertyRef Name="VdeCod" />
+          </Key>
+          <Property Name="VdeCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VdeNom" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="VdeSta" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="CulCod" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="CUS01_CUSITM01">
+          <End Role="CustoItens" Type="EFGESAGROModel.Store.CustoItens" Multiplicity="1" />
+          <End Role="CustoEstimado" Type="EFGESAGROModel.Store.CustoEstimado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustoItens">
+              <PropertyRef Name="CusItm" />
+            </Principal>
+            <Dependent Role="CustoEstimado">
+              <PropertyRef Name="CusEstItm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUS01_CUSTTTLH01">
+          <End Role="Talhao" Type="EFGESAGROModel.Store.Talhao" Multiplicity="1" />
+          <End Role="CustoEstimado" Type="EFGESAGROModel.Store.CustoEstimado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Talhao">
+              <PropertyRef Name="TlhCod" />
+            </Principal>
+            <Dependent Role="CustoEstimado">
+              <PropertyRef Name="CusEstTlhCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUS02_CUSITM02">
+          <End Role="CustoItens" Type="EFGESAGROModel.Store.CustoItens" Multiplicity="1" />
+          <End Role="CustoPrevisto" Type="EFGESAGROModel.Store.CustoPrevisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustoItens">
+              <PropertyRef Name="CusItm" />
+            </Principal>
+            <Dependent Role="CustoPrevisto">
+              <PropertyRef Name="CusPrevItm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUS02_CUSTLH02">
+          <End Role="Talhao" Type="EFGESAGROModel.Store.Talhao" Multiplicity="1" />
+          <End Role="CustoPrevisto" Type="EFGESAGROModel.Store.CustoPrevisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Talhao">
+              <PropertyRef Name="TlhCod" />
+            </Principal>
+            <Dependent Role="CustoPrevisto">
+              <PropertyRef Name="CusPrevTlhCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cidade_Estado">
+          <End Role="Estado" Type="EFGESAGROModel.Store.Estado" Multiplicity="1" />
+          <End Role="Cidade" Type="EFGESAGROModel.Store.Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstCod" />
+            </Principal>
+            <Dependent Role="Cidade">
+              <PropertyRef Name="EstCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fazenda_Cidade">
+          <End Role="Cidade" Type="EFGESAGROModel.Store.Cidade" Multiplicity="1" />
+          <End Role="Fazenda" Type="EFGESAGROModel.Store.Fazenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="CidCod" />
+            </Principal>
+            <Dependent Role="Fazenda">
+              <PropertyRef Name="FazCid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fazenda_Estado">
+          <End Role="Estado" Type="EFGESAGROModel.Store.Estado" Multiplicity="1" />
+          <End Role="Fazenda" Type="EFGESAGROModel.Store.Fazenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstCod" />
+            </Principal>
+            <Dependent Role="Fazenda">
+              <PropertyRef Name="FazEst" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fazenda_Pessoa">
+          <End Role="Pessoa" Type="EFGESAGROModel.Store.Pessoa" Multiplicity="1" />
+          <End Role="Fazenda" Type="EFGESAGROModel.Store.Fazenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="PesCod" />
+            </Principal>
+            <Dependent Role="Fazenda">
+              <PropertyRef Name="FazPes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_Cidade">
+          <End Role="Estado" Type="EFGESAGROModel.Store.Estado" Multiplicity="1" />
+          <End Role="Pessoa" Type="EFGESAGROModel.Store.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstCod" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="EstCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_Estado">
+          <End Role="Cidade" Type="EFGESAGROModel.Store.Cidade" Multiplicity="1" />
+          <End Role="Pessoa" Type="EFGESAGROModel.Store.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="CidCod" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="CidCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variedade_Cultura">
+          <End Role="Cultura" Type="EFGESAGROModel.Store.Cultura" Multiplicity="1" />
+          <End Role="Variedade" Type="EFGESAGROModel.Store.Variedade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cultura">
+              <PropertyRef Name="CulCod" />
+            </Principal>
+            <Dependent Role="Variedade">
+              <PropertyRef Name="CulCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TLH01_CUL01">
+          <End Role="Cultura" Type="EFGESAGROModel.Store.Cultura" Multiplicity="1" />
+          <End Role="Talhao" Type="EFGESAGROModel.Store.Talhao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cultura">
+              <PropertyRef Name="CulCod" />
+            </Principal>
+            <Dependent Role="Talhao">
+              <PropertyRef Name="CulCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TLH01_FAZ01">
+          <End Role="Fazenda" Type="EFGESAGROModel.Store.Fazenda" Multiplicity="0..1" />
+          <End Role="Talhao" Type="EFGESAGROModel.Store.Talhao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fazenda">
+              <PropertyRef Name="FazCod" />
+            </Principal>
+            <Dependent Role="Talhao">
+              <PropertyRef Name="TlhFazCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TLH01_SFR01">
+          <End Role="Safra" Type="EFGESAGROModel.Store.Safra" Multiplicity="0..1" />
+          <End Role="Talhao" Type="EFGESAGROModel.Store.Talhao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Safra">
+              <PropertyRef Name="SfrCod" />
+            </Principal>
+            <Dependent Role="Talhao">
+              <PropertyRef Name="TlhSfrCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TLH01_VDE01">
+          <End Role="Variedade" Type="EFGESAGROModel.Store.Variedade" Multiplicity="1" />
+          <End Role="Talhao" Type="EFGESAGROModel.Store.Talhao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variedade">
+              <PropertyRef Name="VdeCod" />
+            </Principal>
+            <Dependent Role="Talhao">
+              <PropertyRef Name="VdeCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EFGESAGROModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EFGESAGROEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Cidade" EntityType="EFGESAGROModel.Cidade" />
+          <EntitySet Name="Cultura" EntityType="EFGESAGROModel.Cultura" />
+          <EntitySet Name="CustoEstimado" EntityType="EFGESAGROModel.CustoEstimado" />
+          <EntitySet Name="CustoItens" EntityType="EFGESAGROModel.CustoItens" />
+          <EntitySet Name="CustoPrevisto" EntityType="EFGESAGROModel.CustoPrevisto" />
+          <EntitySet Name="Estado" EntityType="EFGESAGROModel.Estado" />
+          <EntitySet Name="Fazenda" EntityType="EFGESAGROModel.Fazenda" />
+          <EntitySet Name="Pessoa" EntityType="EFGESAGROModel.Pessoa" />
+          <EntitySet Name="Safra" EntityType="EFGESAGROModel.Safra" />
+          <EntitySet Name="Talhao" EntityType="EFGESAGROModel.Talhao" />
+          <EntitySet Name="Variedade" EntityType="EFGESAGROModel.Variedade" />
+          <AssociationSet Name="FK_Cidade_Estado" Association="EFGESAGROModel.FK_Cidade_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fazenda_Cidade" Association="EFGESAGROModel.FK_Fazenda_Cidade">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="Fazenda" EntitySet="Fazenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_Estado" Association="EFGESAGROModel.FK_Pessoa_Estado">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variedade_Cultura" Association="EFGESAGROModel.FK_Variedade_Cultura">
+            <End Role="Cultura" EntitySet="Cultura" />
+            <End Role="Variedade" EntitySet="Variedade" />
+          </AssociationSet>
+          <AssociationSet Name="TLH01_CUL01" Association="EFGESAGROModel.TLH01_CUL01">
+            <End Role="Cultura" EntitySet="Cultura" />
+            <End Role="Talhao" EntitySet="Talhao" />
+          </AssociationSet>
+          <AssociationSet Name="CUS01_CUSITM01" Association="EFGESAGROModel.CUS01_CUSITM01">
+            <End Role="CustoItens" EntitySet="CustoItens" />
+            <End Role="CustoEstimado" EntitySet="CustoEstimado" />
+          </AssociationSet>
+          <AssociationSet Name="CUS01_CUSTTTLH01" Association="EFGESAGROModel.CUS01_CUSTTTLH01">
+            <End Role="Talhao" EntitySet="Talhao" />
+            <End Role="CustoEstimado" EntitySet="CustoEstimado" />
+          </AssociationSet>
+          <AssociationSet Name="CUS02_CUSITM02" Association="EFGESAGROModel.CUS02_CUSITM02">
+            <End Role="CustoItens" EntitySet="CustoItens" />
+            <End Role="CustoPrevisto" EntitySet="CustoPrevisto" />
+          </AssociationSet>
+          <AssociationSet Name="CUS02_CUSTLH02" Association="EFGESAGROModel.CUS02_CUSTLH02">
+            <End Role="Talhao" EntitySet="Talhao" />
+            <End Role="CustoPrevisto" EntitySet="CustoPrevisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fazenda_Estado" Association="EFGESAGROModel.FK_Fazenda_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Fazenda" EntitySet="Fazenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_Cidade" Association="EFGESAGROModel.FK_Pessoa_Cidade">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fazenda_Pessoa" Association="EFGESAGROModel.FK_Fazenda_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Fazenda" EntitySet="Fazenda" />
+          </AssociationSet>
+          <AssociationSet Name="TLH01_FAZ01" Association="EFGESAGROModel.TLH01_FAZ01">
+            <End Role="Fazenda" EntitySet="Fazenda" />
+            <End Role="Talhao" EntitySet="Talhao" />
+          </AssociationSet>
+          <AssociationSet Name="TLH01_SFR01" Association="EFGESAGROModel.TLH01_SFR01">
+            <End Role="Safra" EntitySet="Safra" />
+            <End Role="Talhao" EntitySet="Talhao" />
+          </AssociationSet>
+          <AssociationSet Name="TLH01_VDE01" Association="EFGESAGROModel.TLH01_VDE01">
+            <End Role="Variedade" EntitySet="Variedade" />
+            <End Role="Talhao" EntitySet="Talhao" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cidade">
+          <Key>
+            <PropertyRef Name="CidCod" />
+          </Key>
+          <Property Type="Int32" Name="CidCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CidNom" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="EstCod" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="EFGESAGROModel.FK_Cidade_Estado" FromRole="Cidade" ToRole="Estado" />
+          <NavigationProperty Name="Fazenda" Relationship="EFGESAGROModel.FK_Fazenda_Cidade" FromRole="Cidade" ToRole="Fazenda" />
+          <NavigationProperty Name="Pessoa" Relationship="EFGESAGROModel.FK_Pessoa_Estado" FromRole="Cidade" ToRole="Pessoa" />
+        </EntityType>
+        <EntityType Name="Cultura">
+          <Key>
+            <PropertyRef Name="CulCod" />
+          </Key>
+          <Property Type="Int32" Name="CulCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CulNom" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CulSta" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Variedade" Relationship="EFGESAGROModel.FK_Variedade_Cultura" FromRole="Cultura" ToRole="Variedade" />
+          <NavigationProperty Name="Talhao" Relationship="EFGESAGROModel.TLH01_CUL01" FromRole="Cultura" ToRole="Talhao" />
+        </EntityType>
+        <EntityType Name="CustoEstimado">
+          <Key>
+            <PropertyRef Name="CusEstCod" />
+          </Key>
+          <Property Type="Int32" Name="CusEstCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CusEstTlhCod" Nullable="false" />
+          <Property Type="Decimal" Name="CusEstVlr" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="String" Name="CusEstObs" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CusEstItm" Nullable="false" />
+          <NavigationProperty Name="CustoItens" Relationship="EFGESAGROModel.CUS01_CUSITM01" FromRole="CustoEstimado" ToRole="CustoItens" />
+          <NavigationProperty Name="Talhao" Relationship="EFGESAGROModel.CUS01_CUSTTTLH01" FromRole="CustoEstimado" ToRole="Talhao" />
+        </EntityType>
+        <EntityType Name="CustoItens">
+          <Key>
+            <PropertyRef Name="CusItm" />
+          </Key>
+          <Property Type="Int32" Name="CusItm" Nullable="false" />
+          <Property Type="String" Name="CusItmDesc" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CusItmOrd" Nullable="false" />
+          <Property Type="String" Name="CusItmTip" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CustoEstimado" Relationship="EFGESAGROModel.CUS01_CUSITM01" FromRole="CustoItens" ToRole="CustoEstimado" />
+          <NavigationProperty Name="CustoPrevisto" Relationship="EFGESAGROModel.CUS02_CUSITM02" FromRole="CustoItens" ToRole="CustoPrevisto" />
+        </EntityType>
+        <EntityType Name="CustoPrevisto">
+          <Key>
+            <PropertyRef Name="CusPrevCod" />
+          </Key>
+          <Property Type="Int32" Name="CusPrevCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CusPrevTlhCod" Nullable="false" />
+          <Property Type="Int32" Name="CusPrevItm" Nullable="false" />
+          <Property Type="String" Name="CusPrevObs" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="CusPrevVlr" Nullable="false" Precision="12" Scale="2" />
+          <NavigationProperty Name="CustoItens" Relationship="EFGESAGROModel.CUS02_CUSITM02" FromRole="CustoPrevisto" ToRole="CustoItens" />
+          <NavigationProperty Name="Talhao" Relationship="EFGESAGROModel.CUS02_CUSTLH02" FromRole="CustoPrevisto" ToRole="Talhao" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="EstCod" />
+          </Key>
+          <Property Type="Int32" Name="EstCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="EstNom" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EstSig" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cidade" Relationship="EFGESAGROModel.FK_Cidade_Estado" FromRole="Estado" ToRole="Cidade" />
+          <NavigationProperty Name="Fazenda" Relationship="EFGESAGROModel.FK_Fazenda_Estado" FromRole="Estado" ToRole="Fazenda" />
+          <NavigationProperty Name="Pessoa" Relationship="EFGESAGROModel.FK_Pessoa_Cidade" FromRole="Estado" ToRole="Pessoa" />
+        </EntityType>
+        <EntityType Name="Fazenda">
+          <Key>
+            <PropertyRef Name="FazCod" />
+          </Key>
+          <Property Type="Int32" Name="FazCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FazNom" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazDoc" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazIns" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazCom" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazNIRF" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="FazAre" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="FazLat" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="FazLon" Precision="12" Scale="2" />
+          <Property Type="DateTime" Name="FazDat" Precision="3" />
+          <Property Type="String" Name="FazEnd" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazBai" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazNro" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FazCid" Nullable="false" />
+          <Property Type="Int32" Name="FazEst" Nullable="false" />
+          <Property Type="String" Name="FazCep" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazEmail" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazFone1" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazCel" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FazFax" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FazPes" Nullable="false" />
+          <NavigationProperty Name="Cidade" Relationship="EFGESAGROModel.FK_Fazenda_Cidade" FromRole="Fazenda" ToRole="Cidade" />
+          <NavigationProperty Name="Estado" Relationship="EFGESAGROModel.FK_Fazenda_Estado" FromRole="Fazenda" ToRole="Estado" />
+          <NavigationProperty Name="Pessoa" Relationship="EFGESAGROModel.FK_Fazenda_Pessoa" FromRole="Fazenda" ToRole="Pessoa" />
+          <NavigationProperty Name="Talhao" Relationship="EFGESAGROModel.TLH01_FAZ01" FromRole="Fazenda" ToRole="Talhao" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="PesCod" />
+          </Key>
+          <Property Type="Int32" Name="PesCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PesNom" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesEnd" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesBai" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesNro" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesCom" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesCep" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesCpf" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesRg" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesIns" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesTip" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesEmail" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="EstCod" Nullable="false" />
+          <Property Type="Int32" Name="CidCod" Nullable="false" />
+          <Property Type="String" Name="PesSta" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PesFon" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesCel" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PesUsr" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cidade" Relationship="EFGESAGROModel.FK_Pessoa_Estado" FromRole="Pessoa" ToRole="Cidade" />
+          <NavigationProperty Name="Estado" Relationship="EFGESAGROModel.FK_Pessoa_Cidade" FromRole="Pessoa" ToRole="Estado" />
+          <NavigationProperty Name="Fazenda" Relationship="EFGESAGROModel.FK_Fazenda_Pessoa" FromRole="Pessoa" ToRole="Fazenda" />
+        </EntityType>
+        <EntityType Name="Safra">
+          <Key>
+            <PropertyRef Name="SfrCod" />
+          </Key>
+          <Property Type="Int32" Name="SfrCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SfrDesc" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="SfrDatIni" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="SfrDatFim" Precision="0" />
+          <NavigationProperty Name="Talhao" Relationship="EFGESAGROModel.TLH01_SFR01" FromRole="Safra" ToRole="Talhao" />
+        </EntityType>
+        <EntityType Name="Talhao">
+          <Key>
+            <PropertyRef Name="TlhCod" />
+          </Key>
+          <Property Type="Int32" Name="TlhCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TlhDes" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="TlhQtd" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="String" Name="TlhSisCul" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="TlhAre" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="Decimal" Name="TlhAreApp" Nullable="false" Precision="12" Scale="2" />
+          <Property Type="String" Name="TlhSit" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="TlhDat" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="VdeCod" Nullable="false" />
+          <Property Type="Int32" Name="CulCod" Nullable="false" />
+          <Property Type="Int32" Name="TlhFazCod" />
+          <Property Type="Int32" Name="TlhSfrCod" />
+          <NavigationProperty Name="Cultura" Relationship="EFGESAGROModel.TLH01_CUL01" FromRole="Talhao" ToRole="Cultura" />
+          <NavigationProperty Name="CustoEstimado" Relationship="EFGESAGROModel.CUS01_CUSTTTLH01" FromRole="Talhao" ToRole="CustoEstimado" />
+          <NavigationProperty Name="CustoPrevisto" Relationship="EFGESAGROModel.CUS02_CUSTLH02" FromRole="Talhao" ToRole="CustoPrevisto" />
+          <NavigationProperty Name="Fazenda" Relationship="EFGESAGROModel.TLH01_FAZ01" FromRole="Talhao" ToRole="Fazenda" />
+          <NavigationProperty Name="Safra" Relationship="EFGESAGROModel.TLH01_SFR01" FromRole="Talhao" ToRole="Safra" />
+          <NavigationProperty Name="Variedade" Relationship="EFGESAGROModel.TLH01_VDE01" FromRole="Talhao" ToRole="Variedade" />
+        </EntityType>
+        <EntityType Name="Variedade">
+          <Key>
+            <PropertyRef Name="VdeCod" />
+          </Key>
+          <Property Type="Int32" Name="VdeCod" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="VdeNom" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="VdeSta" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="CulCod" Nullable="false" />
+          <NavigationProperty Name="Cultura" Relationship="EFGESAGROModel.FK_Variedade_Cultura" FromRole="Variedade" ToRole="Cultura" />
+          <NavigationProperty Name="Talhao" Relationship="EFGESAGROModel.TLH01_VDE01" FromRole="Variedade" ToRole="Talhao" />
+        </EntityType>
+        <Association Name="FK_Cidade_Estado">
+          <End Type="EFGESAGROModel.Estado" Role="Estado" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Cidade" Role="Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstCod" />
+            </Principal>
+            <Dependent Role="Cidade">
+              <PropertyRef Name="EstCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fazenda_Cidade">
+          <End Type="EFGESAGROModel.Cidade" Role="Cidade" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Fazenda" Role="Fazenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="CidCod" />
+            </Principal>
+            <Dependent Role="Fazenda">
+              <PropertyRef Name="FazCid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_Estado">
+          <End Type="EFGESAGROModel.Cidade" Role="Cidade" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Pessoa" Role="Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="CidCod" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="CidCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variedade_Cultura">
+          <End Type="EFGESAGROModel.Cultura" Role="Cultura" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Variedade" Role="Variedade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cultura">
+              <PropertyRef Name="CulCod" />
+            </Principal>
+            <Dependent Role="Variedade">
+              <PropertyRef Name="CulCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TLH01_CUL01">
+          <End Type="EFGESAGROModel.Cultura" Role="Cultura" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Talhao" Role="Talhao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cultura">
+              <PropertyRef Name="CulCod" />
+            </Principal>
+            <Dependent Role="Talhao">
+              <PropertyRef Name="CulCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUS01_CUSITM01">
+          <End Type="EFGESAGROModel.CustoItens" Role="CustoItens" Multiplicity="1" />
+          <End Type="EFGESAGROModel.CustoEstimado" Role="CustoEstimado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustoItens">
+              <PropertyRef Name="CusItm" />
+            </Principal>
+            <Dependent Role="CustoEstimado">
+              <PropertyRef Name="CusEstItm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUS01_CUSTTTLH01">
+          <End Type="EFGESAGROModel.Talhao" Role="Talhao" Multiplicity="1" />
+          <End Type="EFGESAGROModel.CustoEstimado" Role="CustoEstimado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Talhao">
+              <PropertyRef Name="TlhCod" />
+            </Principal>
+            <Dependent Role="CustoEstimado">
+              <PropertyRef Name="CusEstTlhCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUS02_CUSITM02">
+          <End Type="EFGESAGROModel.CustoItens" Role="CustoItens" Multiplicity="1" />
+          <End Type="EFGESAGROModel.CustoPrevisto" Role="CustoPrevisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustoItens">
+              <PropertyRef Name="CusItm" />
+            </Principal>
+            <Dependent Role="CustoPrevisto">
+              <PropertyRef Name="CusPrevItm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CUS02_CUSTLH02">
+          <End Type="EFGESAGROModel.Talhao" Role="Talhao" Multiplicity="1" />
+          <End Type="EFGESAGROModel.CustoPrevisto" Role="CustoPrevisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Talhao">
+              <PropertyRef Name="TlhCod" />
+            </Principal>
+            <Dependent Role="CustoPrevisto">
+              <PropertyRef Name="CusPrevTlhCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fazenda_Estado">
+          <End Type="EFGESAGROModel.Estado" Role="Estado" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Fazenda" Role="Fazenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstCod" />
+            </Principal>
+            <Dependent Role="Fazenda">
+              <PropertyRef Name="FazEst" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_Cidade">
+          <End Type="EFGESAGROModel.Estado" Role="Estado" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Pessoa" Role="Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstCod" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="EstCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fazenda_Pessoa">
+          <End Type="EFGESAGROModel.Pessoa" Role="Pessoa" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Fazenda" Role="Fazenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="PesCod" />
+            </Principal>
+            <Dependent Role="Fazenda">
+              <PropertyRef Name="FazPes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TLH01_FAZ01">
+          <End Type="EFGESAGROModel.Fazenda" Role="Fazenda" Multiplicity="0..1" />
+          <End Type="EFGESAGROModel.Talhao" Role="Talhao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fazenda">
+              <PropertyRef Name="FazCod" />
+            </Principal>
+            <Dependent Role="Talhao">
+              <PropertyRef Name="TlhFazCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TLH01_SFR01">
+          <End Type="EFGESAGROModel.Safra" Role="Safra" Multiplicity="0..1" />
+          <End Type="EFGESAGROModel.Talhao" Role="Talhao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Safra">
+              <PropertyRef Name="SfrCod" />
+            </Principal>
+            <Dependent Role="Talhao">
+              <PropertyRef Name="TlhSfrCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TLH01_VDE01">
+          <End Type="EFGESAGROModel.Variedade" Role="Variedade" Multiplicity="1" />
+          <End Type="EFGESAGROModel.Talhao" Role="Talhao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variedade">
+              <PropertyRef Name="VdeCod" />
+            </Principal>
+            <Dependent Role="Talhao">
+              <PropertyRef Name="VdeCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EFGESAGROModelStoreContainer" CdmEntityContainer="EFGESAGROEntities">
+          <EntitySetMapping Name="Cidade">
+            <EntityTypeMapping TypeName="EFGESAGROModel.Cidade">
+              <MappingFragment StoreEntitySet="Cidade">
+                <ScalarProperty Name="EstCod" ColumnName="EstCod" />
+                <ScalarProperty Name="CidNom" ColumnName="CidNom" />
+                <ScalarProperty Name="CidCod" ColumnName="CidCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cultura">
+            <EntityTypeMapping TypeName="EFGESAGROModel.Cultura">
+              <MappingFragment StoreEntitySet="Cultura">
+                <ScalarProperty Name="CulSta" ColumnName="CulSta" />
+                <ScalarProperty Name="CulNom" ColumnName="CulNom" />
+                <ScalarProperty Name="CulCod" ColumnName="CulCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustoEstimado">
+            <EntityTypeMapping TypeName="EFGESAGROModel.CustoEstimado">
+              <MappingFragment StoreEntitySet="CustoEstimado">
+                <ScalarProperty Name="CusEstItm" ColumnName="CusEstItm" />
+                <ScalarProperty Name="CusEstObs" ColumnName="CusEstObs" />
+                <ScalarProperty Name="CusEstVlr" ColumnName="CusEstVlr" />
+                <ScalarProperty Name="CusEstTlhCod" ColumnName="CusEstTlhCod" />
+                <ScalarProperty Name="CusEstCod" ColumnName="CusEstCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustoItens">
+            <EntityTypeMapping TypeName="EFGESAGROModel.CustoItens">
+              <MappingFragment StoreEntitySet="CustoItens">
+                <ScalarProperty Name="CusItmTip" ColumnName="CusItmTip" />
+                <ScalarProperty Name="CusItmOrd" ColumnName="CusItmOrd" />
+                <ScalarProperty Name="CusItmDesc" ColumnName="CusItmDesc" />
+                <ScalarProperty Name="CusItm" ColumnName="CusItm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustoPrevisto">
+            <EntityTypeMapping TypeName="EFGESAGROModel.CustoPrevisto">
+              <MappingFragment StoreEntitySet="CustoPrevisto">
+                <ScalarProperty Name="CusPrevVlr" ColumnName="CusPrevVlr" />
+                <ScalarProperty Name="CusPrevObs" ColumnName="CusPrevObs" />
+                <ScalarProperty Name="CusPrevItm" ColumnName="CusPrevItm" />
+                <ScalarProperty Name="CusPrevTlhCod" ColumnName="CusPrevTlhCod" />
+                <ScalarProperty Name="CusPrevCod" ColumnName="CusPrevCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="EFGESAGROModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="EstSig" ColumnName="EstSig" />
+                <ScalarProperty Name="EstNom" ColumnName="EstNom" />
+                <ScalarProperty Name="EstCod" ColumnName="EstCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fazenda">
+            <EntityTypeMapping TypeName="EFGESAGROModel.Fazenda">
+              <MappingFragment StoreEntitySet="Fazenda">
+                <ScalarProperty Name="FazPes" ColumnName="FazPes" />
+                <ScalarProperty Name="FazFax" ColumnName="FazFax" />
+                <ScalarProperty Name="FazCel" ColumnName="FazCel" />
+                <ScalarProperty Name="FazFone1" ColumnName="FazFone1" />
+                <ScalarProperty Name="FazEmail" ColumnName="FazEmail" />
+                <ScalarProperty Name="FazCep" ColumnName="FazCep" />
+                <ScalarProperty Name="FazEst" ColumnName="FazEst" />
+                <ScalarProperty Name="FazCid" ColumnName="FazCid" />
+                <ScalarProperty Name="FazNro" ColumnName="FazNro" />
+                <ScalarProperty Name="FazBai" ColumnName="FazBai" />
+                <ScalarProperty Name="FazEnd" ColumnName="FazEnd" />
+                <ScalarProperty Name="FazDat" ColumnName="FazDat" />
+                <ScalarProperty Name="FazLon" ColumnName="FazLon" />
+                <ScalarProperty Name="FazLat" ColumnName="FazLat" />
+                <ScalarProperty Name="FazAre" ColumnName="FazAre" />
+                <ScalarProperty Name="FazNIRF" ColumnName="FazNIRF" />
+                <ScalarProperty Name="FazCom" ColumnName="FazCom" />
+                <ScalarProperty Name="FazIns" ColumnName="FazIns" />
+                <ScalarProperty Name="FazDoc" ColumnName="FazDoc" />
+                <ScalarProperty Name="FazNom" ColumnName="FazNom" />
+                <ScalarProperty Name="FazCod" ColumnName="FazCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pessoa">
+            <EntityTypeMapping TypeName="EFGESAGROModel.Pessoa">
+              <MappingFragment StoreEntitySet="Pessoa">
+                <ScalarProperty Name="PesUsr" ColumnName="PesUsr" />
+                <ScalarProperty Name="PesCel" ColumnName="PesCel" />
+                <ScalarProperty Name="PesFon" ColumnName="PesFon" />
+                <ScalarProperty Name="PesSta" ColumnName="PesSta" />
+                <ScalarProperty Name="CidCod" ColumnName="CidCod" />
+                <ScalarProperty Name="EstCod" ColumnName="EstCod" />
+                <ScalarProperty Name="PesEmail" ColumnName="PesEmail" />
+                <ScalarProperty Name="PesTip" ColumnName="PesTip" />
+                <ScalarProperty Name="PesIns" ColumnName="PesIns" />
+                <ScalarProperty Name="PesRg" ColumnName="PesRg" />
+                <ScalarProperty Name="PesCpf" ColumnName="PesCpf" />
+                <ScalarProperty Name="PesCep" ColumnName="PesCep" />
+                <ScalarProperty Name="PesCom" ColumnName="PesCom" />
+                <ScalarProperty Name="PesNro" ColumnName="PesNro" />
+                <ScalarProperty Name="PesBai" ColumnName="PesBai" />
+                <ScalarProperty Name="PesEnd" ColumnName="PesEnd" />
+                <ScalarProperty Name="PesNom" ColumnName="PesNom" />
+                <ScalarProperty Name="PesCod" ColumnName="PesCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Safra">
+            <EntityTypeMapping TypeName="EFGESAGROModel.Safra">
+              <MappingFragment StoreEntitySet="Safra">
+                <ScalarProperty Name="SfrDatFim" ColumnName="SfrDatFim" />
+                <ScalarProperty Name="SfrDatIni" ColumnName="SfrDatIni" />
+                <ScalarProperty Name="SfrDesc" ColumnName="SfrDesc" />
+                <ScalarProperty Name="SfrCod" ColumnName="SfrCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Talhao">
+            <EntityTypeMapping TypeName="EFGESAGROModel.Talhao">
+              <MappingFragment StoreEntitySet="Talhao">
+                <ScalarProperty Name="TlhSfrCod" ColumnName="TlhSfrCod" />
+                <ScalarProperty Name="TlhFazCod" ColumnName="TlhFazCod" />
+                <ScalarProperty Name="CulCod" ColumnName="CulCod" />
+                <ScalarProperty Name="VdeCod" ColumnName="VdeCod" />
+                <ScalarProperty Name="TlhDat" ColumnName="TlhDat" />
+                <ScalarProperty Name="TlhSit" ColumnName="TlhSit" />
+                <ScalarProperty Name="TlhAreApp" ColumnName="TlhAreApp" />
+                <ScalarProperty Name="TlhAre" ColumnName="TlhAre" />
+                <ScalarProperty Name="TlhSisCul" ColumnName="TlhSisCul" />
+                <ScalarProperty Name="TlhQtd" ColumnName="TlhQtd" />
+                <ScalarProperty Name="TlhDes" ColumnName="TlhDes" />
+                <ScalarProperty Name="TlhCod" ColumnName="TlhCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Variedade">
+            <EntityTypeMapping TypeName="EFGESAGROModel.Variedade">
+              <MappingFragment StoreEntitySet="Variedade">
+                <ScalarProperty Name="CulCod" ColumnName="CulCod" />
+                <ScalarProperty Name="VdeSta" ColumnName="VdeSta" />
+                <ScalarProperty Name="VdeNom" ColumnName="VdeNom" />
+                <ScalarProperty Name="VdeCod" ColumnName="VdeCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

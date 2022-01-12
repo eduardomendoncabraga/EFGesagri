@@ -1,0 +1,70 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EF-GESAGRO</title>
+
+    <!-- Bootstrap -->
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel='stylesheet' type='text/css'/>
+    <link href="@Url.Content("~/Content/font-awesome/css/Font-awesome.min.css")" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+
+
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" media="all" />
+    <script src="@Url.Content("~/Script/jquery-2.1.4.min.js")"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <a class="navbar-brand" href="index.html"><i class="fa fa-pagelines"></i>EF-GESAGRO</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li><a href="~/Home/Contato">Contato</a></li>
+                    <li><a href="~/Home/Login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span8">
+                <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2221.1858933919084!2d-47.40028238051708!3d-20.56458300394629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b0a892c898ca5f%3A0x886d8b34af8a8b2!2sR.+Batista+Donzeli%2C+2039+-+Jardim+Alvorada%2C+Franca+-+SP!5e0!3m2!1spt-BR!2sbr!4v1447693726804"></iframe>
+            </div>
+
+            <div class="span4">
+                <h2>EF-GESAGRO</h2>
+                <address>
+                    Rua Batista Donzeli 2039<br>
+                    Filipe Souza<br>
+                    Eduardo Mendonça<br>
+                    Franca - São Paulo<br>
+                    14403-171<br>
+                        <abbr title="Phone">P:</abbr>
+                        016 99968-0971 </br>
+                    <abbr title="Phone">P:</abbr>
+                    016 99376-8290
+                </address>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+</html>

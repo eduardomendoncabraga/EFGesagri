@@ -1,0 +1,88 @@
+﻿@model IEnumerable<EFGesAgro.Models.Talhao>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Relario de talhões</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+    <div style="text-align: center">
+        <img src="@Server.MapPath("~/Images/logo_rel.jpg")"/>
+    </div>
+    <br />
+    <h2 style="text-align: center; text-decoration: solid">Relatório - Talhões</h2>
+    <hr>________________________________________________________________________________________________________________</hr>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Código")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Descrição")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Area HA")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Área plantio")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Propriedade")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Cultura")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Variedade")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Safra")
+                    </th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TlhCod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TlhDes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TlhAre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TlhAreApp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fazenda.FazNom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cultura.CulNom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Variedade.VdeNom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Safra.SfrDesc)
+                    </td>
+                </tr>
+                  
+            }
+        </table>
+        <hr>________________________________________________________________________________________________________________</hr>
+    </div>
+</body>
+</html>
+

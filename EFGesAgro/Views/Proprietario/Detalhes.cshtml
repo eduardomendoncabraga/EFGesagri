@@ -1,0 +1,70 @@
+﻿@model EFGesAgro.Models.Pessoa
+
+@{
+    ViewBag.Title = "Consulta";
+}
+<!DOCTYPE html>
+<h2>Detalhes</h2>
+
+<fieldset>
+    <legend>Proprietários</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PesCod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PesCod)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PesNom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PesNom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PesEnd)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PesEnd)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PesBai)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PesBai)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PesNro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PesNro)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PesCom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PesCom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PesEmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PesEmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CidCod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CidCod)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>

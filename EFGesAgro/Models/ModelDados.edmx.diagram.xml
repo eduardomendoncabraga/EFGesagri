@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="38eba92172dd4a59a22fbc7f91dcfc2c" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="EFGESAGROModel.Cidade" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="EFGESAGROModel.Cultura" Width="1.5" PointX="8.25" PointY="1.375" />
+        <EntityTypeShape EntityType="EFGESAGROModel.CustoEstimado" Width="1.5" PointX="12.75" PointY="6" />
+        <EntityTypeShape EntityType="EFGESAGROModel.CustoItens" Width="1.5" PointX="10.5" PointY="1.125" />
+        <EntityTypeShape EntityType="EFGESAGROModel.CustoPrevisto" Width="1.5" PointX="15.75" PointY="6" />
+        <EntityTypeShape EntityType="EFGESAGROModel.Estado" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="EFGESAGROModel.Fazenda" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="EFGESAGROModel.Pessoa" Width="1.5" PointX="8.25" PointY="4.75" />
+        <EntityTypeShape EntityType="EFGESAGROModel.Safra" Width="1.5" PointX="8.25" PointY="11.125" />
+        <EntityTypeShape EntityType="EFGESAGROModel.Talhao" Width="1.5" PointX="10.5" PointY="5" />
+        <EntityTypeShape EntityType="EFGESAGROModel.Variedade" Width="1.5" PointX="8.25" PointY="13.875" />
+        <AssociationConnector Association="EFGESAGROModel.FK_Cidade_Estado" />
+        <AssociationConnector Association="EFGESAGROModel.FK_Fazenda_Cidade" />
+        <AssociationConnector Association="EFGESAGROModel.FK_Pessoa_Estado" />
+        <AssociationConnector Association="EFGESAGROModel.FK_Variedade_Cultura" />
+        <AssociationConnector Association="EFGESAGROModel.TLH01_CUL01" />
+        <AssociationConnector Association="EFGESAGROModel.CUS01_CUSITM01" />
+        <AssociationConnector Association="EFGESAGROModel.CUS01_CUSTTTLH01" />
+        <AssociationConnector Association="EFGESAGROModel.CUS02_CUSITM02" />
+        <AssociationConnector Association="EFGESAGROModel.CUS02_CUSTLH02" />
+        <AssociationConnector Association="EFGESAGROModel.FK_Fazenda_Estado" />
+        <AssociationConnector Association="EFGESAGROModel.FK_Pessoa_Cidade" />
+        <AssociationConnector Association="EFGESAGROModel.FK_Fazenda_Pessoa" />
+        <AssociationConnector Association="EFGESAGROModel.TLH01_FAZ01" />
+        <AssociationConnector Association="EFGESAGROModel.TLH01_SFR01" />
+        <AssociationConnector Association="EFGESAGROModel.TLH01_VDE01" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

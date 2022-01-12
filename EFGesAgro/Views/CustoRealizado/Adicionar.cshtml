@@ -1,0 +1,56 @@
+﻿@model EFGesAgro.Models.CustoPrevisto
+
+
+@{
+    ViewBag.Title = "Estimativa realizado";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Custo realizado</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="CusPrevTlhCod">Talhão</label>
+                                @Html.DropDownList("CusPrevTlhCod", (IEnumerable<SelectListItem>)ViewBag.NroTlh, "Selecione um talhão", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label class="control-label" for="CusPrevItm">Itens</label>
+                                @Html.DropDownList("CusPrevItm", (IEnumerable<SelectListItem>)ViewBag.ItnsCus, "Selecione um item", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label class="control-label" for="CusPrevVlr">Valor R$</label>
+                                <input type="text" class="form-control" name="CusPrevVlr" id="@Html.EditorFor(model => model.CusPrevVlr, new { onkeyup="formataValor(this,event);" })" required=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <label class="control-label" for="CusPrevObs">Observação</label>
+                            <textarea  class="form-control textarea" rows="3" name="CusPrevObs" id="@Html.EditorFor(model => model.CusPrevObs)"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+
+
+}

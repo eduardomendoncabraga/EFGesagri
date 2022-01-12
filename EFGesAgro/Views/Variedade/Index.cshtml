@@ -1,0 +1,112 @@
+﻿@model IEnumerable<EFGesAgro.Models.Variedade>
+
+@{
+    ViewBag.Title = "Variedade";
+}
+
+<!DOCTYPE html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Variedades
+                <div class="pull-right">
+                    @Html.ActionLink("Novo", "Adicionar", "Variedade", null, new { @class = "btn btn-primary btn-xs btn-filter" })
+                </div>
+                </h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                         <th>
+                            @Html.DisplayName("Código")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Nome")
+                        </th>
+
+                        <th>
+                            @Html.DisplayName("Cultura")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Status")
+                        </th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                  <td>
+                                    @Html.DisplayFor(modelItem => item.VdeCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VdeNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cultura.CulNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VdeSta)
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Editar", "Editar", new { VdeCod = item.VdeCod }, new { @class = "btn btn-primary btn-xs" })
+
+
+                                    <!-- @Html.ActionLink("Detalhes", "Detalhes", new { VdeCod = item.VdeCod }) -->
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Excluir", "Excluir", new { VdeCod = item.VdeCod }, new { @class = "btn btn-danger btn-xs excluir" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @section Scripts{
+                    <script>
+                        $(function () {
+                            var linhaAtual;
+
+                            $("#menuMedicos").addClass("active");
+
+                            $(".excluir").on("click", function () {
+                                if (confirm("Confirma a exclusão da variedade?")) {
+                                    var urlExclusao = $(this).attr("href");
+                                    linhaAtual = $(this).closest("tr");
+
+                                    $.ajax({
+                                        url: urlExclusao,
+                                        type: "POST"
+                                    }).done(function (excluiu) {
+                                        if (excluiu) {
+                                            linhaAtual.remove();
+                                        } else {
+                                            alert("Ocorreu algum problema na exclusão da variedade :(");
+                                        }
+                                    }).fail(function () {
+                                        alert("Ocorreu algum erro :(");
+                                    });
+                                }
+
+                                return false;
+                            });
+                        });
+
+                    </script>
+                }
+            </div>
+            <div class="clearfix">
+                <ul class="pagination pull-right">
+                    <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </>
+</div>

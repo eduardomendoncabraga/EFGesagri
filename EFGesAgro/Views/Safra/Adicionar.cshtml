@@ -1,0 +1,53 @@
+﻿@model EFGesAgro.Models.Safra
+
+@{
+    ViewBag.Title = "Cadastro de safra";
+}
+<!DOCTYPE html>
+
+@Scripts.Render("~/bundles/jquery")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Cadastro de safra</div>
+        </div>
+        <div>
+            <div class="container-fluid">
+                <form class="form-horizontal" method="POST">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="Descrição">Descrição</label>
+                                    <input type="text" class="form-control" placeholder="" name="SfrDesc" id="@Html.EditorFor(model => model.SfrDesc)" required=""/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="DataInicio">Data de abertura</label>
+                                    <input type="Date" class="form-control" name="SfrDatIni" id="@Html.EditorFor(model => model.SfrDatIni)" required=""/>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="DataFim">Data de fechamento  </label>
+                                    <input type="Date" class="form-control" name="SfrDatFim" id="@Html.EditorFor(model => model.SfrDatFim)"/>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <button type="submit" class="btn btn-success">Confirmar</button>
+                <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+            </div>
+        </div>
+    </div>
+}
+
+@using System.Web.Optimization

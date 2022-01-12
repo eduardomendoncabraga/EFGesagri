@@ -1,0 +1,111 @@
+﻿@model EFGesAgro.Models.Talhao
+
+@{
+    ViewBag.Title = "Talhao";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+          
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Novo talhão</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        @Html.HiddenFor(model => model.TlhCod)
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Propriedade rural</label>
+                                @Html.DropDownListFor(x => x.TlhFazCod, (IEnumerable<SelectListItem>)ViewBag.FazCodList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Descricacao">Nro/Descrição</label>
+                                @Html.TextBoxFor(model => model.TlhDes, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Cultura">Cultura</label>
+                                @Html.DropDownListFor(x => x.CulCod, (IEnumerable<SelectListItem>)ViewBag.CulCodList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Variedade">Variedade</label>
+                                @Html.DropDownListFor(x => x.VdeCod, (IEnumerable<SelectListItem>)ViewBag.VdeCodList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Safra">Safra</label>
+                                @Html.DropDownListFor(x => x.TlhSfrCod, (IEnumerable<SelectListItem>)ViewBag.TlhSfrCodList, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="SistemaCultivo">Sist. Cultiv.</label>
+                                @{ List<SelectListItem> ListSistCult = new List<SelectListItem>();
+                                   ListSistCult.Add(new SelectListItem { Text = "Direto", Value = "Direto" });
+                                   ListSistCult.Add(new SelectListItem { Text = "Convencional", Value = "Convencional" });
+                                }
+
+                                @Html.DropDownListFor(x => x.TlhSisCul, new SelectList(ListSistCult, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Situacao">Situação</label>
+                                @{ List<SelectListItem> ListSit = new List<SelectListItem>();
+                                   ListSit.Add(new SelectListItem { Text = "Aberto", Value = "Aberto" });
+                                   ListSit.Add(new SelectListItem { Text = "Fechado", Value = "Fechado" });
+                                }
+
+                                @Html.DropDownListFor(x => x.TlhSit, new SelectList(ListSit, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Quantidade">Qtde.</label>
+                                @Html.TextBoxFor(model => model.TlhQtd, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="AreaHA">Área (HA)</label>
+                                @Html.TextBoxFor(model => model.TlhAre, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="AreaApp">Área aplicada</label>
+                                @Html.TextBoxFor(model => model.TlhAreApp, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="DataPlantio">Data do plantio</label>
+                                @Html.TextBoxFor(model => model.TlhDat, new { @class = "form-control" })
+                            </div>
+                        </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+}

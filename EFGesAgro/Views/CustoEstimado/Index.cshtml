@@ -1,0 +1,128 @@
+﻿@model IEnumerable<EFGesAgro.Models.CustoEstimado>
+
+@{
+    ViewBag.Title = "Custos estimado";
+}
+<!DOCTYPE html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Custo estimado
+                <div class="pull-right">
+                    @Html.ActionLink("Novo", "Adicionar", "CustoEstimado", null, new { @class = "btn btn-primary btn-xs btn-filter" })
+                </div>
+                </h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Código")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Propriedade rural")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Talhão")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Cultura")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Item")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Valo R$")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusEstCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Talhao.Fazenda.FazNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Talhao.TlhDes)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Talhao.Cultura.CulNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustoItens.CusItmDesc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusEstVlr)
+                                </td>
+
+
+
+                                <td>
+                                    @Html.ActionLink("Editar", "Editar", new { CusEstCod = item.CusEstCod }, new { @class = "btn btn-primary btn-xs" })
+                                    <!--@Html.ActionLink("Detalhes", "Detalhes", new { CusEstCod = item.CusEstCod }) -->
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Excluir", "Excluir", new { CusEstCod = item.CusEstCod }, new { @class = "btn btn-danger btn-xs excluir" })
+                                </td>
+                            </tr>
+                        }
+                        <td>
+                            @Model.Sum(i => i.CusEstVlr)
+                        </td>
+                    </tbody>
+                </table>
+                @section Scripts{
+                    <script>
+                        $(function () {
+                            var linhaAtual;
+
+                            $("#menuCustoEstimado").addClass("active");
+
+                            $(".excluir").on("click", function () {
+                                if (confirm("Confirma a exclusão do custo estimado?")) {
+                                    var urlExclusao = $(this).attr("href");
+                                    linhaAtual = $(this).closest("tr");
+
+                                    $.ajax({
+                                        url: urlExclusao,
+                                        type: "POST"
+                                    }).done(function (excluiu) {
+                                        if (excluiu) {
+                                            linhaAtual.remove();
+                                        } else {
+                                            alert("Ocorreu algum problema na exclusão do custo estimado :(");
+                                        }
+                                    }).fail(function () {
+                                        alert("Ocorreu algum erro :(");
+                                    });
+                                }
+
+                                return false;
+                            });
+                        });
+
+                    </script>
+                }
+
+                <div class="clearfix">
+                    <ul class="pagination pull-right">
+                        <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

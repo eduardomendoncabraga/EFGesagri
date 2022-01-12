@@ -1,0 +1,53 @@
+﻿@model EFGesAgro.Models.Variedade
+
+@{
+    ViewBag.Title = "Cadastro de variedade";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Cadastro de variedade</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Descricao">Descrição</label>
+                                <input type="text" name="VdeNom" class="form-control" id="@Html.EditorFor(model => model.VdeNom)" required="" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="CulCod">Cultura</label>
+                                @Html.DropDownList("CulCod", (IEnumerable<SelectListItem>)ViewBag.CulCod, "Selecione uma cultura", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="VdeSta">Status</label>
+                                @{ List<SelectListItem> ListSistatus = new List<SelectListItem>();
+                                   ListSistatus.Add(new SelectListItem { Text = "Ativo", Value = "A" });
+                                   ListSistatus.Add(new SelectListItem { Text = "Inátivo", Value = "I" });
+                                }
+
+                                @Html.DropDownList("VdeSta", new SelectList(ListSistatus, "Value", "Text"), "Escolha o status", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>  
+}

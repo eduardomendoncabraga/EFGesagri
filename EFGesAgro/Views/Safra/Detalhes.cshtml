@@ -1,0 +1,43 @@
+﻿@model EFGesAgro.Models.Safra
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Safra</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SfrCod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SfrCod)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SfrDesc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SfrDesc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SfrDatIni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SfrDatIni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SfrDatFim)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SfrDatFim)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

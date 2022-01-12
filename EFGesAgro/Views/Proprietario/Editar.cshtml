@@ -1,0 +1,158 @@
+﻿@model EFGesAgro.Models.Pessoa
+
+@{
+    ViewBag.Title = "Cadastro de proprietário";
+}
+<!DOCTYPE html>
+@Scripts.Render("~/bundles/jquery")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Cadastro de proprietário</div>
+        </div>
+        <div>
+            <div class="container-fluid">
+                <form class="form-horizontal" method="POST">
+                    <div class="panel-body">
+                        <div class="row">
+                            @Html.HiddenFor(model => model.PesCod)
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Nome</label>
+                                    @Html.TextBoxFor(model => model.PesNom, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="Tipo">Tipo</label>
+                                    @{ List<SelectListItem> ListTipos = new List<SelectListItem>();
+                                       ListTipos.Add(new SelectListItem { Text = "Física", Value = "F" });
+                                       ListTipos.Add(new SelectListItem { Text = "Juridica", Value = "J" });
+                                    }
+
+                                    @Html.DropDownListFor(x => x.PesTip, new SelectList(ListTipos, "Value", "Text"), new {  @id = "ocultarDoc", @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="Dcoumento">CPF/CNPJ</label>
+                                    @Html.TextBoxFor(model => model.PesCpf, new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-3 ocultarIns" id="Inscricao">
+                                <div class="form-group">
+                                    <label class="control-label" for="InscricaoEstadual">Inscrição Estadual</label>
+                                    @Html.TextBoxFor(model => model.PesIns, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-3 ocultarRg" id="Rg">
+                                <div class="form-group">
+                                    <label class="control-label" for="RG">RG</label>
+                                    @Html.TextBoxFor(model => model.PesRg, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="Endereco">Endereço</label>
+                                    @Html.TextBoxFor(model => model.PesEnd, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label class="control-label" for="Numero">Nro</label>
+                                    @Html.TextBoxFor(model => model.PesNro, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="Bairro">Bairro</label>
+                                    @Html.TextBoxFor(model => model.PesBai, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="Complemento">Complemento</label>
+                                    @Html.TextBoxFor(model => model.PesCom, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="Estado">Estado</label>
+                                    @Html.DropDownListFor(x => x.EstCod, (IEnumerable<SelectListItem>)ViewBag.EstCodList, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="Cidade">Cidade</label>
+
+                                    @Html.DropDownListFor(x => x.CidCod, (IEnumerable<SelectListItem>)ViewBag.CidCodList, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label" for="CEP">Cep</label>
+                                    @Html.TextBoxFor(model => model.PesCep, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="Telefone">Telefone</label>
+                                    @Html.TextBoxFor(model => model.PesFon, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label" for="Celular">Celular</label>
+                                    @Html.TextBoxFor(model => model.PesCel, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="Status">Status</label>
+                                    @{ List<SelectListItem> StatusPessoa = new List<SelectListItem>();
+                                       StatusPessoa.Add(new SelectListItem { Text = "Ativo", Value = "A" });
+                                       StatusPessoa.Add(new SelectListItem { Text = "Inátivo", Value = "I" });
+                                    }
+
+                                    @Html.DropDownListFor(x => x.PesSta, new SelectList(StatusPessoa, "Value", "Text"), new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="Enail">Email</label>
+                                    @Html.TextBoxFor(model => model.PesEmail, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="Senha">Senha</label>
+                                    @Html.TextBoxFor(model => model.PesUsr, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <button type="submit" class="btn btn-success">Confirmar</button>
+                <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+            </div>
+        </div>
+    </div>
+}
+
+@using System.Web.Optimization

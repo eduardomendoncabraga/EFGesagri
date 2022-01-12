@@ -1,0 +1,160 @@
+﻿@model EFGesAgro.Models.Fazenda
+
+@{
+    ViewBag.Title = "Cadastro de fazenda";
+}
+
+@using (Html.BeginForm())
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Cadastro de fazenda</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Proprietario">Proprietário</label>
+                                @Html.DropDownList("FazPes", (IEnumerable<SelectListItem>)ViewBag.FazPesList, "Selecione um proprietario", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Nome</label>
+                                <input type="text" class="form-control" placeholder="" name="FazNom" id="@Html.EditorFor(model => model.FazNom)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Documento</label>
+                                <input type="text" class="form-control" placeholder="" name="FazDoc" id="@Html.EditorFor(model => model.FazDoc)" required=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Inscrição estadual</label>
+                                <input type="text" class="form-control" placeholder="" name="FazIns" id="@Html.EditorFor(model => model.FazIns)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">NIRF</label>
+                                <input type="text" class="form-control" placeholder="" name="FazNIRF" id="@Html.EditorFor(model => model.FazNIRF)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Data">Data do cadastrado</label>
+                                <input type="Date" class="form-control" placeholder="" name="FazDat" id="@Html.EditorFor(model => model.FazDat)" required="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Endereco">Endereço</label>
+                                <input type="text" class="form-control" placeholder="" name="FazEnd" id="@Html.EditorFor(model => model.FazEnd)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <label class="control-label" for="Numero">Nro</label>
+                                <input type="text" class="form-control" placeholder="" name="FazNro" id="@Html.EditorFor(model => model.FazNro)" required="" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Bairro">Bairro</label>
+                                <input type="text" class="form-control"  placeholder="" name="FazBai" id="@Html.EditorFor(model => model.FazBai)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Complemento">Complemento</label>
+                                <input type="text" class="form-control" placeholder="" name="FazCom" id="@Html.EditorFor(model => model.FazCom)" required="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Estado">Estado</label>
+                                @Html.DropDownList("FazEst", (IEnumerable<SelectListItem>)ViewBag.FazEstList, "Selecione um estado", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Cidade">Cidade</label>
+                                @Html.DropDownList("FazCid", (IEnumerable<SelectListItem>)ViewBag.FazCidList, "Selecione uma cidade", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="CEP">Cep</label>
+                                <input type="text" class="form-control" placeholder="" name="FazCep" id="@Html.EditorFor(model => model.FazCep)" required="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Telefone">Telefone</label>
+                                <input type="text" class="form-control" placeholder="" name="FazFon1" id="@Html.EditorFor(model => model.FazFone1)" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Celular">Celular</label>
+                                <input type="text" class="form-control" placeholder="" name="FazCel" id="@Html.EditorFor(model => model.FazCel)" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fax">Fax</label>
+                                <input type="text" class="form-control" placeholder="" name="FazFax" id="@Html.EditorFor(model => model.FazFax)" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Email</label>
+                                <input type="text" class="form-control" placeholder="" name="FazEmail" id="@Html.EditorFor(model => model.FazEmail)" required=""/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Area (HA)</label>
+                                <input type="text" class="form-control" placeholder="" name="FazAre" id="@Html.EditorFor(model => model.FazAre)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Latitude</label>
+                                <input type="text" class="form-control" placeholder="" name="FazAre" id="@Html.EditorFor(model => model.FazLat)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Longitude</label>
+                                <input type="text" class="form-control" placeholder="" name="FazLon" id="@Html.EditorFor(model => model.FazLon)" required=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+}

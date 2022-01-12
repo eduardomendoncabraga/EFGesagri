@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EFGesAgro.Models.Cultura>
+@{  Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Lista de Culturas</title>
+    <style>
+        *,body, html {
+            font-family:'Courier New', Arial;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>    
+    <table class="table" border="0" style="width:100%; border:0" cellpadding="2" cellspacing="2">
+        <tr>
+            <td colspan="2">Relatório - Lista de Culturas</td>
+        </tr>
+        <tr>
+            <th style="text-align:left">Descrição</th>
+            <th style="text-align:center">Status</th>            
+        </tr>    
+    @foreach (var item in Model) {
+        <tr>
+            <td style="text-align:left; width:80%">
+                @Html.DisplayFor(modelItem => item.CulNom)
+            </td>
+            <td style="text-align:center; width:20%">
+                @Html.DisplayFor(modelItem => item.CulSta)
+            </td>            
+        </tr>
+    }    
+    </table>
+</body>
+</html>

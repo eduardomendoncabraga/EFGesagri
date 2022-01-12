@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EF-GesAgro - @ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" type="text/css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href="@Url.Content("~/Content/style.css")" type="text/css" rel="stylesheet" media="all"/>
+   <link  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <a class="navbar-brand"><i class="fa fa-pagelines"></i>EF-GESAGRO</a>
+            </div>
+            <nav id="menu">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Proprietário", "Index", "Proprietario")</li>
+                    <li>
+                        @Html.ActionLink("Culturas", "Index", "Cultura")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Variedades", "Index", "Variedade")
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Talhão", "Index", "Talhao")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Fazendas", "Index", "Fazenda")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Safras", "Index", "Safra")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Estimativa de custo", "Index", "CustoEstimado")
+                    </li>
+                    <li class="menuCustoRealizado">
+                        @Html.ActionLink("Custo realizado", "Index", "CustoRealizado")
+                    </li>
+                    <li class="menuCustoRealizado">
+                        @Html.ActionLink("Rel", "RelEstimadoXPrevisto", "RelEstXPrev")
+                    </li>
+                    <li class="menuCustoRealizado">
+                        @Html.ActionLink("Teste", "Index", "CustoViewModel")
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Relatório Culturas", "CulturaLista", "Cultura", null, new { @class = "btn btn-xs btn-filter" })</li>
+                            <li>@Html.ActionLink("Relatório Estimativa de custo", "RelarioCustoEstimado", "CustoEstimado", null, new { @class = "btn btn-xs btn-filter", @target = "_blank" })</li>
+                            <li>@Html.ActionLink("Relatório Custo realizado", "RelarioCustoRealizado", "CustoRealizado", null, new { @class = "btn btn-xs btn-filter", @target = "_blank" })</li>
+
+                            <li>@Html.ActionLink("Relatório", "Rela", "RelEstimadoXPrevisto", null, new { @class = "btn btn-xs btn-filter", @target = "_blank" })</li>
+                            <li>@Ajax.ActionLink("Relatório XXXX", "Rela", "RelEstimadoXPrevisto", null, new AjaxOptions { HttpMethod = "Post" }, new { @class = "btn btn-xs btn-filter", @target = "_blank" })</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+    </nav>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.min.js")"></script>
+     <script src="@Url.Content("~/Scripts/Mascara.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Table.js")"></script>
+    <script src="@Url.Content("~/Scripts/responsiveslides.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/essenciais.js")"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
+

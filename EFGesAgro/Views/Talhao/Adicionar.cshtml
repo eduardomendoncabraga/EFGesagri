@@ -1,0 +1,111 @@
+﻿@model EFGesAgro.Models.Talhao
+
+@{
+    ViewBag.Title = "Adicionar";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Novo talhão</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Fazenda">Propriedade rural</label>
+                                @Html.DropDownList("TlhFazCod", (IEnumerable<SelectListItem>)ViewBag.FazCodList, "Selecione uma propriedade rural", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label" for="Descricao">Nro/Descrição</label>
+                                <input type="text" class="form-control" placeholder="" name="TlhDes" id="@Html.EditorFor(model => model.TlhDes)" required=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label" for="Cultura">Cultura</label>
+                                @Html.DropDownList("CulCod", (IEnumerable<SelectListItem>)ViewBag.CulCodList, "Selecione uma cultura", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Variedade">Variedade</label>
+                                @Html.DropDownList("VdeCod", (IEnumerable<SelectListItem>)ViewBag.VdeCodList, "Selecione uma variedade", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="Safra">Safra</label>
+                                @Html.DropDownList("TlhSfrCod", (IEnumerable<SelectListItem>)ViewBag.TlhSfrCodList, "Selecione uma safra", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="SistemaCultivo">Sist. Cultiv.</label>
+                            @{ List<SelectListItem> ListSistCult = new List<SelectListItem>();
+                               ListSistCult.Add(new SelectListItem { Text = "Direto", Value = "Direto" });
+                               ListSistCult.Add(new SelectListItem { Text = "Convencional", Value = "Convencional" });
+                            }
+
+                            @Html.DropDownList("TlhSisCul", new SelectList(ListSistCult, "Value", "Text"), "Escolha uma opção", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="Situacao">Situação</label>
+                            @{ List<SelectListItem> ListSit = new List<SelectListItem>();
+                               ListSit.Add(new SelectListItem { Text = "Aberto", Value = "Aberto" });
+                               ListSit.Add(new SelectListItem { Text = "Fechado", Value = "Fechado" });
+                            }
+
+                            @Html.DropDownList("TlhSit", new SelectList(ListSit, "Value", "Text"), "Escolha o tipo", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    </div>
+                
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label" for="Quantidade">Qtde.</label>
+                            <input type="text" class="form-control" placeholder="" name="TlhQtd" id="@Html.EditorFor(model => model.TlhQtd)" required=""/>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label" for="AreaHA">Área (HA)</label>
+                            <input type="text" class="form-control" placeholder="" name="TlhAre" id="@Html.EditorFor(model => model.TlhAre)"/>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label" for="AreaApp">Área aplicada</label>
+                            <input type="text" class="form-control" placeholder="" name="TlhAreApp" id="@Html.EditorFor(model => model.TlhAreApp)" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label" for="DataPlantio">Data do plantio</label>
+                            <input type="Date"  class="form-control" name="TlhDat" id="@Html.EditorFor(model => model.TlhDat)" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+
+      
+}

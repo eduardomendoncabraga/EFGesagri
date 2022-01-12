@@ -1,0 +1,153 @@
+﻿@model IEnumerable<EFGesAgro.Models.Talhao>
+
+@{
+    ViewBag.Title = "Talhões";
+}
+<!DOCTYPE html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Talhão
+                <div class="pull-right">
+                    @Html.ActionLink("Novo", "Adicionar", "Talhao", null, new { @class = "btn btn-primary btn-xs btn-filter" })
+                </div>
+                    </h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Código")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Propriedade")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Descrição")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Quantidade")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Area")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Area App")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Situação")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Variedade")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Cultura")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Safra")
+                            </th>
+                             <th>
+                                @Html.DisplayName("Data")
+                            </th>                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TlhCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fazenda.FazNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TlhDes)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TlhQtd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TlhAre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TlhAreApp)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TlhSit)
+                                </td>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Variedade.VdeNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cultura.CulNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Safra.SfrDesc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TlhDat)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Editar", new { TlhCod = item.TlhCod }, new { @class = "btn btn-primary btn-xs"})
+                                    <!--@Html.ActionLink("Detalhes", "Detalhes", new { TlhCod = item.TlhCod }) -->
+
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Excluir", "Excluir", new { TlhCod = item.TlhCod }, new { @class = "btn btn-danger btn-xs excluir" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @section Scripts{
+                    <script>
+                        $(function () {
+                            var linhaAtual;
+
+                            $("#menuTalhao").addClass("active");
+
+                            $(".excluir").on("click", function () {
+                                if (confirm("Confirma a exclusão do talhão?")) {
+                                    var urlExclusao = $(this).attr("href");
+                                    linhaAtual = $(this).closest("tr");
+
+                                    $.ajax({
+                                        url: urlExclusao,
+                                        type: "POST"
+                                    }).done(function (excluiu) {
+                                        if (excluiu) {
+                                            linhaAtual.remove();
+                                        } else {
+                                            alert("Ocorreu algum problema na exclusão do talhão :(");
+                                        }
+                                    }).fail(function () {
+                                        alert("Ocorreu algum erro :(");
+                                    });
+                                }
+
+                                return false;
+                            });
+                        });
+
+                    </script>
+                }
+
+                <div class="clearfix">
+                    <ul class="pagination pull-right">
+                        <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

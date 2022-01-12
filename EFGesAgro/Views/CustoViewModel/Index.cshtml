@@ -1,0 +1,98 @@
+﻿@model EFGesAgro.Models.CustoViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<div class="container-fluid">
+    <h3></h3>
+    <hr />
+    <div class="row">
+        <div class="panel panel-default filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">CustoEstimadoXCustoPrevisto</h3>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Cód. Custo Estimado")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Item")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Valor R$")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListaCustoTela)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusEstCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustoItens.CusItmDesc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusEstVlr)
+                                </td>
+                            </tr>
+                        }
+                           <tr>
+                            <th>
+                                @Html.DisplayName("Cód. Custo Previsto")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Item")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Valor R$")
+                            </th>
+                        </tr>
+                        @foreach (var item in Model.ListaCustoTela2)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusPrevCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusPrevItm)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CusPrevVlr)
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+                  <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                       
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <ul class="pagination pull-right">
+                        <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<EFGesAgro.Models.Safra>
+
+@{
+    ViewBag.Title = "Safras";
+}
+
+
+<!DOCTYPE html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Safra
+                <div class="pull-right">
+                    @Html.ActionLink("Novo", "Adicionar", "Safra", null, new { @class = "btn btn-primary btn-xs btn-filter" })
+                </div>
+                </h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Código")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Descrição")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Data de abertura")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Data de fechamento")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SfrCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SfrDesc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SfrDatIni)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SfrDatFim)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Editar", new { SfrCod = item.SfrCod }, new { @class = "btn btn-primary btn-xs" })
+                                    <!--@Html.ActionLink("Detalhes", "Detalhes", new { SfrCod = item.SfrCod }) -->
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Excluir", "Excluir", new { SfrCod = item.SfrCod }, new { @class = "btn btn-danger btn-xs excluir" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @section Scripts{
+                    <script>
+                        $(function () {
+                            var linhaAtual;
+
+                            $("#menuMedicos").addClass("active");
+
+                            $(".excluir").on("click", function () {
+                                if (confirm("Confirma a exclusão da safra?")) {
+                                    var urlExclusao = $(this).attr("href");
+                                    linhaAtual = $(this).closest("tr");
+
+                                    $.ajax({
+                                        url: urlExclusao,
+                                        type: "POST"
+                                    }).done(function (excluiu) {
+                                        if (excluiu) {
+                                            linhaAtual.remove();
+                                        } else {
+                                            alert("Ocorreu algum problema na exclusão da cultura :(");
+                                        }
+                                    }).fail(function () {
+                                        alert("Ocorreu algum erro :(");
+                                    });
+                                }
+
+                                return false;
+                            });
+                        });
+
+                    </script>
+                }
+                <div class="clearfix">
+                    <ul class="pagination pull-right">
+                        <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

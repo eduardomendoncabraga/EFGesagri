@@ -1,0 +1,56 @@
+﻿@model EFGesAgro.Models.CustoEstimado
+
+
+@{
+    ViewBag.Title = "Estimativa de custo";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="panel-title">Estimativa de custo</div>
+        </div>
+        <div class="container-fluid">
+            <form class="form-horizontal" method="POST">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="control-label" for="CusEstTlhCod">Talhão</label>
+                                @Html.DropDownList("CusEstTlhCod", (IEnumerable<SelectListItem>)ViewBag.NroTlh, "Selecione um talhão", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label class="control-label" for="CusEstItm">Itens</label>
+                                @Html.DropDownList("CusEstItm", (IEnumerable<SelectListItem>)ViewBag.ItnsCus, "Selecione um item", new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label class="control-label" for="CusEstVlr">Valor R$</label>
+                                <input type="text" class="form-control" name="CusEstVlr" id="@Html.EditorFor(model => model.CusEstVlr, new { onkeyup="formataValor(this,event);" })" required=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <label class="control-label" for="CusEstObs">Observação</label>
+                            <textarea  class="form-control textarea" rows="3" name="CusEstObs" id="@Html.EditorFor(model => model.CusEstObs)"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <a href="@Url.Action("Index")" class="btn btn-default">Voltar</a>
+        </div>
+    </div>
+
+
+}

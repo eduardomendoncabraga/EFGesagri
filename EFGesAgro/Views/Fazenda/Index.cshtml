@@ -1,0 +1,160 @@
+﻿@model IEnumerable<EFGesAgro.Models.Fazenda>
+
+@{
+    ViewBag.Title = "Fazendas";
+}
+
+<!DOCTYPE html>
+<div class="container-fluid">
+    <hr />
+    <div class="row">
+        <div class="panel panel-default filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Fazendas</h3>
+                <div class="pull-right">
+                    @Html.ActionLink("Novo", "Adicionar", "Fazenda", null, new { @class = "btn btn-primary btn-xs btn-filter" })
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <th>
+                            @Html.DisplayName("Código")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Nome")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Documento")
+                        </th>
+                        <th>
+                            @Html.DisplayName("NIRF")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Proprietário")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Proprietário")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Area")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Estado")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Cidade")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Endereço")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Nro")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Bairro")
+                        </th>
+                        <th>
+                            @Html.DisplayName("CEP")
+                        </th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                 <td>
+                                    @Html.DisplayFor(modelItem => item.FazCod)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FazNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FazDoc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FazNIRF)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Pessoa.PesNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FazAre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Estado.EstNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cidade.CidNom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FazEnd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FazNro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FazBai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FazCep)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Editar", new { FazCod = item.FazCod }, new { @class = "btn btn-primary btn-xs" })
+                                    <!-- @Html.ActionLink("Detalhes", "Detalhes", new { FazCod = item.FazCod }) -->
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Excluir", "Excluir", new { FazCod = item.FazCod }, new { @class = "btn btn-danger btn-xs excluir" })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+                @section Scripts{
+                    <script>
+                        $(function () {
+                            var linhaAtual;
+
+                            $("#menuFazenda").addClass("active");
+
+                            $(".excluir").on("click", function () {
+                                if (confirm("Confirma a exclusão da fazenda?")) {
+                                    var urlExclusao = $(this).attr("href");
+                                    linhaAtual = $(this).closest("tr");
+
+                                    $.ajax({
+                                        url: urlExclusao,
+                                        type: "POST"
+                                    }).done(function (excluiu) {
+                                        if (excluiu) {
+                                            linhaAtual.remove();
+                                        } else {
+                                            alert("Ocorreu algum problema na exclusão da fazenda :(");
+                                        }
+                                    }).fail(function () {
+                                        alert("Ocorreu algum erro :(");
+                                    });
+                                }
+
+                                return false;
+                            });
+                        });
+
+                    </script>
+                }
+            </div>
+            <div class="clearfix">
+                <ul class="pagination pull-right">
+                    <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </>
+</div>

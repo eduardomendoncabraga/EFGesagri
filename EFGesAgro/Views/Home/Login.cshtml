@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;    
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EF-GESAGRO</title>
+    <!-- Bootstrap -->
+    <link href="@Url.Content("~/Content/bootstrap.css")" type="text/css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" type="text/css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css' />
+    <link href="@Url.Content("~/Content/style.css")" type="text/css" rel="stylesheet" media="all"/>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row" id="pwd-container">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+                <section class="login-form">
+                    <form  method="get" role="login" action="javascript:function()">
+                        <img src="@Url.Content("~/Images/logo.jpg")" class="img-responsive" alt="" />
+                        <input id="txtLogin" type="text" name="txtLogin" placeholder="email@email.com" class="form-control input-lg" autofocus/>
+                        <br>
+                        <input id="txtSenha" type="password" name="txtSenha" placeholder="Senha" class="form-control input-lg" />
+                        <div class="pwstrength_viewport_progress"></div>
+                        <br>
+
+                        <button id="botao-entrar" type="submit" name="botao-entrar" class="btn btn-lg btn-primary btn-block">Login</button>
+                    </form>
+
+                    <div class="form-links">
+                         <div id="status"></div>
+                         <p>&nbsp;</p>
+                        <a href="">www.efgesagro.com</a>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.js")"></script>
+    <script src="@Url.Content("~/Scripts/Login.Home.js")"></script>
+</body>
+
+</html>

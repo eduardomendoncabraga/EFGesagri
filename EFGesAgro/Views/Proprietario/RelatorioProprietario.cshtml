@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EFGesAgro.Models.Pessoa>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Relario de Proprietários</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+    <div style="text-align:center">
+        <img src="@Server.MapPath("~/Images/logo_rel.jpg")"/>
+    </div>
+    <br />
+    <h2 style="text-align: center; text-decoration: solid">Relatório - Proprietários</h2>
+    <hr>________________________________________________________________________________________________________________</hr>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Código")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Nome")
+                    </th>
+                    <th> 
+                        @Html.DisplayName("Contato")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Estado")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Cidade")
+                    </th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PesCod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PesNom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PesFon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado.EstNom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cidade.CidNom)
+                    </td>
+                </tr>
+                  
+            }
+        </table>
+        <hr>________________________________________________________________________________________________________________</hr>
+    </div>
+</body>
+</html>
+

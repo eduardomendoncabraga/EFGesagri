@@ -1,0 +1,36 @@
+﻿@model EFGesAgro.Models.Cultura
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<fieldset>
+    <legend>Cultura</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CulCod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CulCod)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CulNom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CulNom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CulSta)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CulSta)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

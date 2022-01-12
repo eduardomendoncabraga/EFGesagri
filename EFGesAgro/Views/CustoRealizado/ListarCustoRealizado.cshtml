@@ -1,0 +1,66 @@
+﻿@model IEnumerable<EFGesAgro.Models.CustoPrevisto>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListarCustoRealizado</title>
+</head>
+<body>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Código")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Propriedade rural")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Talhão")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Cultura")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Item")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Valo R$")
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CusPrevCod)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Talhao.Fazenda.FazNom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Talhao.TlhDes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Talhao.Cultura.CulNom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustoItens.CusItmDesc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CusPrevVlr)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</body>
+</html>
